@@ -36,8 +36,7 @@ RSpec.describe Ticket, :type => :model do
 
   describe 'title:hoge,body:fugaのチケットが１件登録されている場合' do
     before do
-      ticket = Ticket.new({ title: 'hoge', body: 'fuga' })
-      ticket.save
+      ticket = FactoryGirl.create(:ticket, { title: 'hoge', body: 'fuga' })
       @inserted_ticket = Ticket.find(ticket.id)
     end
     it 'チケット総数が1件であること' do
