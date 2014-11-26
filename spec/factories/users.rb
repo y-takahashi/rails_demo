@@ -2,9 +2,9 @@
 
 FactoryGirl.define do
   factory :user do
-    nickname "MyString"
-    password_digest "MyString"
-    first_name "MyString"
-    last_name "MyString"
+    sequence(:nickname) {|i| "nickname#{i}"}
+    sequence(:first_name) {|i| "first_name#{i}"}
+    sequence(:last_name) {|i| "last_name#{i}"}
+    password 'password'
   end
 end

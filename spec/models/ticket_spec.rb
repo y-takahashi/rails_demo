@@ -55,5 +55,11 @@ RSpec.describe Ticket, :type => :model do
       ticket = FactoryGirl.create(:ticket)
       expect(ticket.assignee).to be_nil
     end
+    it 'チケットに担当者を設定する' do
+      user = FactoryGirl.create(:user)
+      ticket = FactoryGirl.create(:ticket)
+      ticket.assign(user)
+      expect(ticket.assignee).not_to be_nil
+    end
   end
 end
