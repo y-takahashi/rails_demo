@@ -59,7 +59,14 @@ RSpec.describe Ticket, :type => :model do
       user = FactoryGirl.create(:user)
       ticket = FactoryGirl.create(:ticket)
       ticket.assign(user)
-      expect(ticket.assignee).not_to be_nil
+      expect(ticket.assignee).to eq user
+    end
+    it 'チケットに担当者を設定して保存する' do
+      user = FactoryGirl.create(:user)
+      ticket = FactoryGirl.create(:ticket)
+      ticket.assign(user)
+      ticket.save
+      expect(Ticket.find(ticket.id).assignee).to eq user
     end
   end
 end
