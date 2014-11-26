@@ -51,22 +51,17 @@ RSpec.describe Ticket, :type => :model do
   end
 
   describe 'チケットに担当者を指定できる' do
-    it 'デフォルトでは担当者はいない' do
-      ticket = FactoryGirl.create(:ticket)
-      expect(ticket.assignee).to be_nil
+    before do
+      @ticket = FactoryGirl.create(:ticket)
+      @user = FactoryGirl.create(:user)
     end
-    it 'チケットに担当者を設定する' do
-      user = FactoryGirl.create(:user)
-      ticket = FactoryGirl.create(:ticket)
-      ticket.assign(user)
-      expect(ticket.assignee).to eq user
+    it 'デフォルトでは担当者はいない' do
+      expect(@ticket.assignee).to be_nil
     end
     it 'チケットに担当者を設定して保存する' do
-      user = FactoryGirl.create(:user)
-      ticket = FactoryGirl.create(:ticket)
-      ticket.assign(user)
-      ticket.save
-      expect(Ticket.find(ticket.id).assignee).to eq user
+      @ticket.assign(@user)
+      @ticket.save
+      expect(Ticket.find(@ticket.id).assignee).to eq @user
     end
   end
 end
