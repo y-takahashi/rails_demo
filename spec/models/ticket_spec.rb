@@ -49,4 +49,11 @@ RSpec.describe Ticket, :type => :model do
       expect(@inserted_ticket.body).to eq 'fuga'
     end
   end
+
+  describe 'チケットに担当者を指定できる' do
+    it 'デフォルトでは担当者はいない' do
+      ticket = FactoryGirl.create(:ticket)
+      expect(ticket.assignee).to be_nil
+    end
+  end
 end
