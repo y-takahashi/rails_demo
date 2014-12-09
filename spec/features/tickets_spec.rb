@@ -30,7 +30,6 @@ feature "Tickets", :type => :feature do
       fill_in 'ticket_title', with: 'ha-gendattu'
       fill_in 'ticket_body', with: 'merosangoti'
       click_link_or_button 'Create Ticket'
-      puts page.body
       expect(page).to have_css('p#notice')
       expect(page).to have_content('ha-gendattu')
       expect(page).to have_content('merosangoti')
