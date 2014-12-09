@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/y-takahashi/rails_demo.svg?branch=master)](https://travis-ci.org/y-takahashi/rails_demo)
+{<img src="https://travis-ci.org/y-takahashi/rails_demo.svg?branch=master" alt="Build Status" />}[https://travis-ci.org/y-takahashi/rails_demo]
 
 == README
 
