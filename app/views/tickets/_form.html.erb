@@ -27,6 +27,11 @@
     <%= f.label :expires_at %><br>
     <%= f.datetime_select :expires_at %>
   </div>
+  <div class="field">
+    <%= f.label :assignee %><br>
+    <%#= f.select :assignee, User.all.pluck(:nickname, :id), :include_blank => true %>
+    <%= f.collection_select :assignee_id, User.all, :id, :nickname , :include_blank => true %>
+  </div>
   <div class="actions">
     <%= f.submit %>
   </div>
