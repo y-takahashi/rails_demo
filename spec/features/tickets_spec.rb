@@ -38,17 +38,6 @@ feature "Tickets", :type => :feature do
       expect(page).to have_content('ha-gendattu')
       expect(page).to have_content('merosangoti')
     end
-    it '新規登録時に担当者をアサインできること' do
-      # puts page.body
-      fill_in 'ticket_title', with: 'ha-gendattu'
-      fill_in 'ticket_body', with: 'merosangoti'
-      select @users[3].nickname, from: 'ticket_assignee_id'
-      click_link_or_button 'Create Ticket'
-      expect(page).to have_css('p#notice')
-      expect(page).to have_content('ha-gendattu')
-      expect(page).to have_content('merosangoti')
-      expect(page).to have_content(@users[3].nickname)
-    end
   end
 
   # 宿題
@@ -65,7 +54,6 @@ feature "Tickets", :type => :feature do
     it '編集画面からデータを変更できる' do
       fill_in 'ticket_title', with: 'メロメロメロ'
       fill_in 'ticket_body', with: '全力マン'
-      select @user.nickname, from: 'ticket_assignee_id'
       check 'ticket_finished'
       select '2015', from: 'ticket_expires_at_1i'
       select 'April', from: 'ticket_expires_at_2i'
@@ -77,7 +65,6 @@ feature "Tickets", :type => :feature do
       expect(page).to have_css('p#notice')
       expect(page).to have_content('メロメロメロ')
       expect(page).to have_content('全力マン')
-      expect(page).to have_content(@user.nickname)
       expect(page).to have_content('Finished: true')
       expect(page).to have_content('2015-04-25 10:30:00')
     end
